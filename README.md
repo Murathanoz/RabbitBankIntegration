@@ -22,7 +22,7 @@ It allows us to send messages under certain standards. In other words, it allows
 First run this comment for using Docker 
 
 ```bash
-docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 rabbitmq:3
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 rabbitmq:3-management
 ```
 
 * Definitin in application.properties
@@ -154,7 +154,17 @@ now we can send data to RabbitMq
         rabbitTemplate.convertAndSend(exchange.getName(), rabbitPerperty.getThirdRoute(), transferRequest);
 	}
 ```
+## Request
 
+- PUT request /v1/transfer 
+
+```bash
+{
+    "fromId":"101",
+    "toId":"102",
+    "amount":30
+}
+```
 ## Requirements
 - Java 17
 - Jpa
